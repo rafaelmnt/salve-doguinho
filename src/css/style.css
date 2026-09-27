@@ -1,0 +1,508 @@
+:root {
+    /* CORES */
+    --cor-primaria: #586743;
+    --cor-secundaria: #2C1A1D;
+    --cor-terciaria: #B9314F;
+    --cor-fundo: #ECE2D0;
+    --cor-alerta: #E9724C;
+    --cor-nav-hover: #88B1CE;
+    --cor-branco: #ffffff;
+    --cor-preto: #000000;
+    
+    /* TIPOGRAFIA */
+    --fonte-logo: 40px;
+    --fonte-titulo: 30px;
+    --fonte-sub-titulo: 20px;
+    --fonte-texto: 16px;
+    --fonte-formulario: 18px;
+
+    /* ESPAÇAMENTO */
+    --espacamento-0: 0px;
+    --espacamento-1: 4px;
+    --espacamento-2: 8px;
+    --espacamento-3: 16px;
+    --espacamento-4: 24px;
+    --espacamento-5: 32px;
+}
+
+/*FONTES*/
+@font-face{
+    font-family: 'Fredoka-Bold';
+    src:url(../assets/fonts/Fredoka-Bold.ttf);
+}
+
+@font-face{
+    font-family: 'Fredoka-Light';
+    src:url(../assets/fonts/Fredoka-Light.ttf);
+}
+
+@font-face{
+    font-family: 'Fredoka-Regular';
+    src:url(../assets/fonts/Fredoka-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Lora-Regular';
+    src: url(../assets/fonts/Lora-Regular.woff);
+}
+
+
+/* LAYOUT GERAL */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    grid-column: col-start / span 12;
+    min-height: 100vh;
+}
+
+.container > * {
+    grid-column: col-start / span 12;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    margin: var(--espacamento-0);
+    padding: var(--espacamento-0);
+}
+
+img {
+    margin: var(--espacamento-0);
+    padding-top: var(--espacamento-2);
+    vertical-align: bottom;
+}
+
+/* HEADER E NAV */
+
+header {
+    background-color: var(--cor-primaria);
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-secundaria);
+    font-size: var(--fonte-texto);
+    padding-top: var(--espacamento-2);
+    padding-bottom: var(--espacamento-2);
+}
+
+#menu-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav label {
+    display: block;
+    color: var(--cor-branco);
+    font-size: 24px;
+    cursor: pointer;
+    padding: var(--espacamento-1) var(--espacamento-3);
+}
+
+#menu-toggle:focus-visible + label {
+    outline: 2px solid var(--cor-nav-hover);
+    border-radius: 5px;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu-toggle:checked ~ .menu {
+    display: flex;
+}
+
+a {
+    color: var(--cor-branco);
+    font-family: 'Fredoka-Light';
+    font-weight: bold;
+    text-decoration: none;   
+    padding: var(--espacamento-2);
+}
+
+a:hover {
+    color: var(--cor-nav-hover);
+}
+
+/* CONTEÚDO PRINCIPAL E TIPOGRAFIA */
+
+main {
+    text-align: center;
+    padding-left: var(--espacamento-3);
+    padding-right: var(--espacamento-3);
+}
+
+h1 {
+    font-family: 'Fredoka-Bold';
+    font-size: var(--fonte-logo);
+    color: var(--cor-branco);
+}
+
+h2 {
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-titulo);
+    color: var(--cor-preto);
+}
+
+h3 {
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-sub-titulo);
+    color: var(--cor-terciaria);
+    margin-bottom: var(--espacamento-0);
+}
+
+p {
+    font-family: 'Lora-Regular';
+    font-size: var(--fonte-texto);
+    color: var(--cor-secundaria);
+}
+
+main p {
+    margin-top: var(--espacamento-1);
+}
+
+.badge {
+    margin-left: 8px;
+    display: inline-block;
+    background-color: var(--cor-terciaria);
+    color: var(--cor-branco);
+    padding: var(--espacamento-1) var(--espacamento-2);
+    border-radius: 12px;
+    font-size: var(--fonte-texto);
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    margin: var(--espacamento-0);
+    padding: var(--espacamento-0);
+}
+
+li {
+    font-family: 'Fredoka-Regular';
+    color: var(--cor-preto);
+    font-size: var(--fonte-texto);
+    margin-top: var(--espacamento-2);
+}
+
+/* ALERTA */
+
+.alert {
+    display: none;
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-texto);
+    background-color: var(--cor-alerta);
+    color: var(--cor-branco);
+    padding: var(--espacamento-3);
+    margin: var(--espacamento-3) 0;
+    border-radius: 2px;
+}
+
+.alert.show {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espacamento-3);
+}
+
+.alert-fechar {
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    outline: none;   
+    color: var(--cor-branco);
+    margin: var(--espacamento-0);
+    padding: var(--espacamento-1);
+    line-height: 0;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.alert-fechar svg {
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: stroke-width 0.3s;
+}
+
+.alert-fechar:hover {
+    background-color: transparent;
+    transform: rotate(90deg);
+}
+
+.alert-fechar:hover svg {
+    stroke-width: 4;
+}
+
+.alert-fechar:focus-visible {
+    outline: 2px solid var(--cor-branco);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* FORMULÁRIO */
+
+form {
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-formulario);
+    text-align: center;
+}
+
+fieldset {
+    border-color: var(--cor-secundaria);
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 14px;
+    row-gap: 12px;
+    align-items: center;
+}
+
+input {
+    font-family: 'Fredoka-Regular';
+    outline: none;
+    border-radius: 5px;
+}
+
+input:focus {
+    border: 2px solid var(--cor-primaria);
+    box-shadow: 0 0 3px var(--cor-primaria);
+}
+
+input:user-invalid {
+    border: 1px solid var(--cor-terciaria);
+    box-shadow: 0 0 3px var(--cor-terciaria);
+}
+
+select {
+    color: var(--cor-preto);
+    font-family: 'Fredoka-Regular';
+}
+
+button {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-preto);
+    color: var(--cor-branco);
+    margin: var(--espacamento-3);
+    padding: var(--espacamento-2);
+    padding-left: var(--espacamento-5);
+    padding-right: var(--espacamento-5);
+    border-radius: 15px;
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-formulario);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+#botao-formulario:hover {
+    outline: 2px solid var(--cor-secundaria);
+    border-radius: 5px;
+}
+
+button:focus {
+    outline: 2px solid var(--cor-secundaria);
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* TOAST */
+
+#toast {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+    font-family: 'Fredoka-Regular';
+    font-size: var(--fonte-texto);
+    position: fixed;
+    bottom: var(--espacamento-3);
+    right: var(--espacamento-3);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--espacamento-3);
+    border-radius: 8px;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: var(--espacamento-3); opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: var(--espacamento-3); opacity: 1;}
+}
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    font-family: 'Lora-Regular';
+    padding-top: var(--espacamento-3);
+    padding-bottom: var(--espacamento-3);
+}
+
+footer p {
+    color: var(--cor-branco);
+    padding-left: var(--espacamento-3);
+}
+
+footer address {
+    padding-left: var(--espacamento-3);
+}
+
+/* RESPONSIVIDADE */
+
+/* A partir de 400px: menu horizontal, sem botão hambúrguer */
+@media (min-width: 400px) {
+
+    main {
+        padding-left: var(--espacamento-4);
+        padding-right: var(--espacamento-4);
+    }
+
+    #menu-toggle,
+    nav label {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+}
+
+/* A partir de 576px: header em grid (logo + título), footer em linha */
+@media (min-width: 576px) {
+
+    header {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    img {
+        grid-column: 1;
+        grid-row: 1;
+        padding-left: var(--espacamento-2);
+    }
+
+    h1 {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        text-align: center;
+        margin: var(--espacamento-0);
+    }
+
+    nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    footer p {
+        padding: var(--espacamento-3);
+    }
+
+    footer address {
+        padding: var(--espacamento-3);
+    }
+    
+}
+
+/* A partir de 768px: texto alinhado à esquerda e formulário em 2 colunas */
+@media (min-width: 768px) {
+
+    h1 {
+        text-align: left;
+        padding-left: var(--espacamento-4);
+    }
+
+    main {
+        text-align: left;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #area-atuacao {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    button {
+        grid-column: 1 / -1;
+        grid-row: 3;
+    }
+
+}
+
+/* A partir de 992px: formulário em 3 colunas */
+@media (min-width: 992px) {
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #area-atuacao {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    button {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+}
+
+/* A partir de 1200px: mais espaçamento lateral no conteúdo */
+@media (min-width: 1200px) {
+
+    main {
+        padding-left: var(--espacamento-5);
+        padding-right: var(--espacamento-5);
+    }
+
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <link rel="icon" type="image/x-icon" href="src/assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salve Doguinho</title>
+</head>
+
+<body>
+
+<div class="container">
+    
+    <header>
+        <h1>Salve Doguinho</h1>
+        
+        <img src="src/assets/img/logo.png" width="140" height="140" alt="Logo da ONG Salve Doguinho">
+
+        <nav>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" aria-label="Abrir menu">☰</label>
+
+            <div class="menu">
+                <a href="#" data-pagina="tpl-inicio">Início</a>
+                <a href="#" data-pagina="tpl-projetos">Projetos</a>
+                <a href="#" data-pagina="tpl-voluntarios">Voluntários</a>
+                <a href="#" data-pagina="tpl-cadastro">Cadastro</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        Carregando...
+    </main>
+
+    <template id='tpl-inicio'>
+        <h2>Conheça a ONG</h2>
+
+        <h3>Quem somos nós</h3>
+        <p>
+            Somos uma organização dedicada à proteção e ao bem-estar de animais domésticos em situação de abandono. <br> 
+            Atuamos oferecendo acolhimento, cuidados e novas oportunidades para que cada <br> 
+            doguinho possa encontrar um lar seguro e responsável.
+        </p>
+
+        <h3>Missão</h3>
+        <p>
+            Nossa missão é resgatar, cuidar e proteger animais em situação de abandono, <br> 
+            promovendo seu bem-estar e incentivando a adoção responsável. <br> 
+            Também buscamos conscientizar a comunidade sobre a importância da proteção e do respeito aos animais.
+        </p>
+    </template>
+
+    <template id="tpl-projetos">
+
+    <section>
+        <h2>Doações</h2>
+        <h3>Estamos aceitando doações de:</h3>
+
+        <ul id="lista-doacoes"></ul>
+    </section>
+
+    <section>
+        <h2>Voluntariado</h2>
+        <h3>Participe das nossas campanhas:</h3>
+
+        <ul id="lista-campanhas"></ul>
+    </section>
+
+</template>
+
+<template id="tpl-voluntarios">
+    <h2>Conheça nossos voluntários:</h2>
+
+    <h3>Banho Pet</h3>
+    <ul id="lista-banho"></ul>
+
+    <h3>Resgate Animal</h3>
+    <ul id="lista-resgate"></ul>
+
+    <h3>Adestradores Avante</h3>
+    <ul id="lista-adestradores"></ul>
+
+    <h3>Sem preferência</h3>
+    <ul id="lista-sem-preferencia"></ul>
+</template>
+        
+    <template id='tpl-cadastro'>
+        <h2>Torne-se um voluntário!</h2>
+        
+        <div class="alert" id="alerta">
+            <span>Atenção: preencha todos os campos obrigatórios antes de enviar o cadastro.</span>
+            <button type="button" class="alert-fechar" id="alerta-fechar" aria-label="Fechar alerta">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M5 5L19 19M19 5L5 19" />
+                </svg>
+            </button>
+        </div>
+
+        <form>
+            <fieldset id="dados-pessoais">
+                <legend>Dados Pessoais</legend>
+                
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" class="form" name="nome" required>
+                
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" class="form" name="cpf" 
+                    pattern="[0-9]{11}" 
+                    placeholder="000.000.000-00"
+                    required>
+
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" class="form" name="nascimento">
+                
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" class="form" name="telefone" 
+                    pattern="[0-9]{10,11}"
+                    placeholder="(00) 00000-0000"
+                    required>
+            </fieldset>
+            
+            <fieldset id="endereco">
+                <legend>Endereço</legend>
+
+                <label for="logradouro">Logradouro:</label>
+                <input type="text" id="logradouro" class="form" name="logradouro" required>
+
+                <label for="numero">Nº:</label>
+                <input type="text" id="numero" class="form" name="numero"
+                    pattern="[0-9]{1,}"
+                    placeholder="00"
+                    required>
+
+                <label for="complemento">Complemento:</label>
+                <input type="text" id="complemento" class="form" name="complemento">
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" class="form" name="cep" 
+                    pattern="[0-9]{8}" 
+                    placeholder="00000-000"
+                    required>
+            </fieldset>
+
+            <fieldset id="area-atuacao">
+                <legend>Área de atuação:</legend>
+
+                <label for="areas">Escolha a área que você mais deseja:</label>
+                <select id="areas" name="areas">
+                    <option value="">Sem preferência</option>
+                    <option value="banho">Banho Pet</option>
+                    <option value="resgate">Resgate Animal</option>
+                    <option value="adestradores">Adestradores Avante</option>
+                </select>
+            </fieldset>
+            
+            <button type="submit" id="botao-formulario">Enviar</button>
+            
+        </form>
+
+        <div id="toast">
+            Cadastro realizado com sucesso!
+        </div>
+    </template>
+
+    <footer>
+        <p>© Salve Doguinho</p>
+        <address>
+            (12) 98877-6655<br>
+            Rua Sagitarius, 22 - Brazópolis
+        </address>
+    </footer>
+
+    <script type="module" src="src/js/script.js"></script>
+
+</div>
+
+</body>
+
+</html>
